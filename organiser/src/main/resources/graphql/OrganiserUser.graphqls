@@ -1,7 +1,7 @@
 type OrganiserUser{
     id:ID!
     firstname:String!
-    lastName:String!
+    lastname:String!
     email:String!
     Password:String!
 }
@@ -12,10 +12,13 @@ extend type Query{
     findUserByEmail(email:String!):OrganiserUser!
 }
 
+input OrganiserUserInput{
+    firstname:String!,
+    lastname:String!,
+    email:String!,
+    password:String!
+}
+
 extend type Mutation {
-    createOrganiserUser(
-        firstName:String!,
-        lastName:String!,
-        email:String!,
-        password:String!): OrganiserUser!
+    createOrganiserUser(input:OrganiserUserInput): OrganiserUser!
 }

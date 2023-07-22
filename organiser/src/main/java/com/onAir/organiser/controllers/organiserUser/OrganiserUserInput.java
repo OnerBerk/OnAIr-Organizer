@@ -1,19 +1,19 @@
-package com.onAir.organiser.domain.organiserUser;
+package com.onAir.organiser.controllers.organiserUser;
 
-import com.onAir.organiser.BaseEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.Instant;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Entity
-public class OrganiserUser extends BaseEntity {
+public class OrganiserUserInput {
     private String firstname;
     private String lastname;
     private String email;
     private String password;
+    private Instant created_at;
 }
