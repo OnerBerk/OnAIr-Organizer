@@ -1,0 +1,26 @@
+enum TodoState{
+    done
+    inProgress
+}
+type Todo{
+    id:ID!
+    description:String!
+    todoState:TodoState!
+    deadline:String
+    author:OrganiserUser
+    created_At:String
+}
+
+extend type Query{
+    findAllTodos:[Todo]
+    findTodoById(id:ID!):Todo
+}
+extend type Mutation{
+    createTodo(
+        description:String!
+        todoState:TodoState!
+        deadline:String
+        author:ID!
+        created_At:String):Todo
+    updateTodo(id:ID!, description:String!):Todo
+}
