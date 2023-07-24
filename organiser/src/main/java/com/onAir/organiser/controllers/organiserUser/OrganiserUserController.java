@@ -53,7 +53,7 @@ public class OrganiserUserController {
     public OrganiserUser createOrganiserUser(@Argument(name = "input") OrganiserUserInput organiserUserInput) {
         Optional<OrganiserUser> existUser = organiserUserRepository.findOrganiserUserByEmail(organiserUserInput.getEmail());
         if (existUser.isPresent()) {
-            throw  new ErrorResponse("User already exist");
+            throw new ErrorResponse("User already exist", 409);
         } else {
             OrganiserUser organiserUser = new OrganiserUser();
             organiserUser.setFirstname(organiserUserInput.getFirstname());

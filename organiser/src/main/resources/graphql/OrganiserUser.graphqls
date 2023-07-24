@@ -23,5 +23,5 @@ input OrganiserUserInput{
 }
 
 extend type Mutation {
-    createOrganiserUser(input:OrganiserUserInput): OrganiserUser!
+    createOrganiserUser(input:OrganiserUserInput): UserResponse
 }
