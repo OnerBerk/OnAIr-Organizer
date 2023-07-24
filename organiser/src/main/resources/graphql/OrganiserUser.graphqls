@@ -4,12 +4,15 @@ type OrganiserUser{
     lastname:String!
     email:String!
     Password:String!
+    todoList:[Todo]!
 }
+
+union UserResponse = OrganiserUser|ErrorResponse
 
 extend type Query{
     findUsers:[OrganiserUser]!
-    findUserById(id:ID!):OrganiserUser!
-    findUserByEmail(email:String!):OrganiserUser!
+    findUserById(id:ID!):UserResponse!
+    findUserByEmail(email:String!):UserResponse!
 }
 
 input OrganiserUserInput{

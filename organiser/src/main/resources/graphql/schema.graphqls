@@ -1,2 +1,7 @@
+type ErrorResponse{
+    message:String!
+}
+
+
 type Query{}
 type Mutation{}

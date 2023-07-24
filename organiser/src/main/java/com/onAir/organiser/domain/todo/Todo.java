@@ -19,6 +19,6 @@ public class Todo extends BaseEntity {
     private StateEnum state;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "author_id")
+    @JoinColumn(name = "organiser_id")
     private OrganiserUser organiserUser;
 }
