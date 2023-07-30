@@ -1,12 +1,15 @@
 import {gql} from 'apollo-angular'
 
 const FIND_USERS = gql`
-  query {findUsers {
-    id
-    firstname
-    lastname
-    email
-  }}
+    query {findUsers {
+        id
+        firstname
+        lastname
+        email
+        todoList {
+            description
+        }
+    }}
 `
 const FIND_USER_BY_ID= gql`
   query($id:ID!){
