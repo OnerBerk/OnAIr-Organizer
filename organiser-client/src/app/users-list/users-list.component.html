@@ -1,0 +1,8 @@
+<div>
+  <div  *ngIf="error">{{error}}</div>
+  <div *ngIf="usersList">
+    <div class="test" *ngFor="let user of usersList let i=index">
+      {{user.firstname}}
+    </div>
+  </div>
+</div>
