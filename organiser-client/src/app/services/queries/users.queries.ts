@@ -8,4 +8,33 @@ const FIND_USERS = gql`
     email
   }}
 `
-export {FIND_USERS}
+const FIND_USER_BY_ID= gql`
+  query($id:ID!){
+    findUserById(id:$id){
+      ... on OrganiserUser {
+        firstname
+        lastname
+        email
+        todoList {
+          todoState
+          description
+        }
+      }
+      ... on ErrorResponse {
+        message
+        code
+      }
+    }
+  }
+`
+
+/*
+*pour utiliser dans le composant
+*  .watchQuery({
+        query: GET_POSTS_OF_AUTHOR,
+        variables: {
+          id: 12,
+        },
+      })
+* */
+export {FIND_USERS, FIND_USER_BY_ID}
