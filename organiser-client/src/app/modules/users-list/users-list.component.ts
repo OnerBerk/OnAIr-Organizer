@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Apollo} from "apollo-angular";
-import {FIND_USERS} from "../services/queries/users.queries";
+import {FIND_USERS} from "../../services/queries/users.queries";
 
 type User={
   id:string

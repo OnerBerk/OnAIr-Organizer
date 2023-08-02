@@ -1,0 +1,35 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="input-bloc">
+    <label for="firstname">
+      Prénom
+    </label>
+    <input id="firstname" type="text" formControlName="firstname"  required>
+
+  <div class="input-bloc">
+    <label for="lastname">
+      Nom
+    </label>
+    <input id="lastname" type="text" formControlName="lastname" required>
+  </div >
+  <div class="input-bloc">
+    <label for="email">
+      Email
+    </label>
+    <input id="email" type="email" formControlName="email" required>
+  </div>
+  <div class="input-bloc">
+    <label for="password">
+      Password
+    </label>
+    <input id="password" type="password" formControlName="password" required>
+  </div>
+  <div class="input-bloc">
+    <label for="confirmPassword">
+      Confirm Password
+    </label>
+    <input id="confirmPassword" type="password" formControlName="confirmPassword" required>
+  </div>
+  <button class="button" type="submit">Purchase</button>
+  </div>
+</form>
+

@@ -11,6 +11,7 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
+import javax.validation.Valid;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -35,7 +36,6 @@ public class OrganiserUserController {
     public OrganiserUser findUserById(@Argument Long id) {
         OrganiserUser existOrganiserUser = new OrganiserUser();
         existOrganiserUser = organiserUserRepository.findById(id).orElseThrow();
-
         return existOrganiserUser;
     }
 
@@ -50,7 +50,7 @@ public class OrganiserUserController {
     }
 
     @MutationMapping
-    public OrganiserUser createOrganiserUser(@Argument(name = "input") OrganiserUserInput organiserUserInput) {
+    public OrganiserUser createOrganiserUser(@Argument(name = "input")   OrganiserUserInput organiserUserInput) {
         Optional<OrganiserUser> existUser = organiserUserRepository.findOrganiserUserByEmail(organiserUserInput.getEmail());
         if (existUser.isPresent()) {
             throw new ErrorResponse("User already exist", 409);
@@ -61,8 +61,9 @@ public class OrganiserUserController {
             organiserUser.setEmail(organiserUserInput.getEmail());
             organiserUser.setPassword(organiserUserInput.getPassword());
             organiserUser.setCreatedAt(now);
-            organiserUser.setTodoList(new ArrayList<>());
-            return organiserUserRepository.save(organiserUser);
+            return organiserUser;
+
+            //return organiserUserRepository.save(organiserUser);
         }
     }
 }

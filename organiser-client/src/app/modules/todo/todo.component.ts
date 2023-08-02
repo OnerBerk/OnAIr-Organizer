@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Apollo, gql} from "apollo-angular";
 import {map, Observable} from "rxjs";
-import {FIND_TODOS} from "../services/queries/todos.queries";
+import {FIND_TODOS} from "../../services/queries/todos.queries";
 
 @Component({
   selector: 'app-todo',

@@ -1,0 +1,26 @@
+form {
+  border: 2px solid #decdcd;
+  width: 30vw;
+  padding: 1em;
+
+  .input-bloc {
+    display: flex;
+    flex-direction: column;
+    height: 4em;
+
+    .input-error {
+      font-size: 0.85em;
+      width: 100%;
+      color: red;
+    }
+  }
+
+  button {
+    margin-top: 1em;
+    outline: none;
+    background-color: #a5b8e0;
+    border: none;
+    color: #37373a;
+    cursor: pointer;
+  }
+}

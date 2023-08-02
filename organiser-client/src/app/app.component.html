@@ -1,5 +1,14 @@
-<div class="content" role="main">
-  <app-users-list></app-users-list>
+<div class="app">
+  <nav>
+    <ul>
+      <li routerLink="/">Login</li>
+      <li routerLink="/register">Register</li>
+      <li routerLink="/todo">Todos</li>
+      <li routerLink="/users">users</li>
+    </ul>
+  </nav>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+  <footer class="footer"> footer</footer>
 </div>
-
-<router-outlet></router-outlet>
