@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {FormValidationService} from "../../services/form-validation/form-validation.service";
+import {Apollo} from "apollo-angular";
+import {CREATE_USER} from "../../services/mutations/users.mutations";
 
 @Component({
   selector: 'app-register',
@@ -8,28 +11,62 @@ import {Router} from "@angular/router";
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  loginForm = this.formBuilder.group({
+  passwordError: string = ""
+
+  registerForm: FormGroup = new FormGroup<any>({
     firstname: '',
     lastname: '',
     email: '',
-    password: ''
+    password: '',
+    confirmPassword: ''
   })
 
   constructor(
-    private formBuilder: FormBuilder,
+    private apollo: Apollo,
+    private fb: FormBuilder,
+    private formValidationService: FormValidationService,
     private router: Router
   ) {
   }
 
   onSubmit(): void {
-    console.warn(this.loginForm.value)
-    this.router.navigate(['/login'])
-
-    //this.loginForm.reset();
+    this.registerForm.valid
+      ? this.createUser()
+      : this.formValidationService.validateAllFormFields(this.registerForm)
   }
 
+  createUser() {
+    if (this.registerForm.value.password !== this.registerForm.value.confirmPassword) {
+      this.passwordError = 'les mot de passe doivent etre identique'
+    } else {
+      console.log('icicic')
+
+      this.apollo.mutate({
+        mutation: CREATE_USER,
+        variables: {
+          firstname: this.registerForm.value.firstname,
+          lastname: this.registerForm.value.lastname,
+          email: this.registerForm.value.email,
+          password: this.registerForm.value.firstname,
+        }
+      })
+        .subscribe((res) => {
+          console.log(res)
+          this.router.navigate(['/login'])
+          this.registerForm.reset();
+        })
+    }
+  }
 
   ngOnInit(): void {
+
+    this.registerForm = this.fb.group({
+      lastname: ['', Validators.required],
+      firstname: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
+    })
   }
 
 }

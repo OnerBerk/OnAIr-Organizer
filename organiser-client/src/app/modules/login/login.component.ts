@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormValidationService} from "../../services/form-validation/form-validation.service";
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private formValidationService: FormValidationService,
     private router: Router
   ) {
   }
@@ -23,21 +25,9 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     this.loginForm.valid
       ? console.log('submit', this.loginForm.value)
-      : this.validateAllFormFields(this.loginForm)
+      : this.formValidationService.validateAllFormFields(this.loginForm)
     //this.router.navigate(['/users'])
     //this.loginForm.reset();
-  }
-
-  private validateAllFormFields(formGroup: FormGroup) {
-    console.log(this.loginForm)
-    Object.keys(formGroup.controls).forEach(field => {
-      const control = formGroup.get(field);
-      if (control instanceof FormControl) {
-        control.markAsDirty({onlySelf: true})
-      } else if (control instanceof FormGroup) {
-        this.validateAllFormFields(control)
-      }
-    })
   }
 
   ngOnInit() {

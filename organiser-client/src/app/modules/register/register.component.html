@@ -1,35 +1,87 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <div class="input-bloc">
     <label for="firstname">
       Prénom
     </label>
-    <input id="firstname" type="text" formControlName="firstname"  required>
-
+    <input
+      id="firstname"
+      formControlName="firstname"
+      name="firstname"
+      type="firstname"
+      class="form-control"
+      placeholder="Prénom"
+    >
+    <div
+      class="input-error"
+      *ngIf="registerForm.controls['firstname'].dirty && registerForm.hasError('required','firstname')">
+      Le champ Prénom est obligatoire
+    </div>
+  </div>
   <div class="input-bloc">
-    <label for="lastname">
-      Nom
-    </label>
-    <input id="lastname" type="text" formControlName="lastname" required>
-  </div >
+    <label for="lastname"> Nom </label>
+    <input
+      id="lastname"
+      formControlName="lastname"
+      name="lastname"
+      type="lastname"
+      class="form-control"
+      placeholder="Nom">
+    <div
+      class="input-error"
+      *ngIf="registerForm.controls['lastname'].dirty && registerForm.hasError('required','lastname')">
+      Le champ nom est obligatoire
+    </div>
+  </div>
   <div class="input-bloc">
-    <label for="email">
-      Email
-    </label>
-    <input id="email" type="email" formControlName="email" required>
+    <label for="email">Email </label>
+    <input
+      id="email"
+      formControlName="email"
+      name="email"
+      class="form-control"
+      placeholder="aaa@mail.com"
+    >
+    <div
+      class="input-error"
+      *ngIf="registerForm.controls['email'].dirty && registerForm.hasError('required','email')">
+      Le champ email est obligatoire
+    </div>
   </div>
   <div class="input-bloc">
     <label for="password">
-      Password
+      Mot de passe
     </label>
-    <input id="password" type="password" formControlName="password" required>
+    <input
+      id="password"
+      formControlName="password"
+      placeholder="Mot de passe"
+      name="password"
+      type="password"
+      class="form-control">
+    <div
+      class="input-error"
+      *ngIf="registerForm.controls['password'].dirty && registerForm.hasError('required','password')">
+      Le champ mot de passe est obligatoire
+    </div>
   </div>
   <div class="input-bloc">
     <label for="confirmPassword">
-      Confirm Password
+      Mot de passe confirmer
     </label>
-    <input id="confirmPassword" type="password" formControlName="confirmPassword" required>
+    <input
+      id="confirmPassword"
+      formControlName="confirmPassword"
+      placeholder="Mot de passe"
+      name="confirmPassword"
+      type="confirmPassword"
+      class="form-control">
+    <div
+      class="input-error"
+      *ngIf="registerForm.controls['confirmPassword'].dirty && registerForm.hasError('required','confirmPassword')">
+      Le champ de confirmation est obligatoire
+    </div>
   </div>
-  <button class="button" type="submit">Purchase</button>
-  </div>
+  <button class="button-submit" type="submit">Purchase</button>
+  <div class="input-error">{{passwordError}}</div>
 </form>
 

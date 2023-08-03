@@ -6,4 +6,32 @@ body{
   height: 100%;
   width: 100%;
   margin: 0;
+
+  .input-bloc {
+    display: flex;
+    flex-direction: column;
+    height: 4em;
+    label{
+      margin-bottom: 0.2em;
+      font-size: 0.85em;
+    }
+
+    input::placeholder{
+      font-size: 0.9em;
+    }
+  }
+  .input-error {
+    font-size: 0.85em;
+    width: 100%;
+    color: red;
+  }
+  .button-submit {
+    padding: 0.3em;
+    border-radius: 3px;
+    outline: none;
+    background-color: #a5b8e0;
+    border: none;
+    color: #37373a;
+    cursor: pointer;
+  }
 }

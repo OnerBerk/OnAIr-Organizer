@@ -7,7 +7,12 @@ type OrganiserUser{
     todoList:[Todo]!
 }
 
-union UserResponse = OrganiserUser|ErrorResponse
+type UserResponseSuccess{
+    organiserUser:OrganiserUser!
+    token:String!
+}
+
+union UserResponse = UserResponseSuccess|ErrorResponse
 
 extend type Query{
     findUsers:[OrganiserUser]!

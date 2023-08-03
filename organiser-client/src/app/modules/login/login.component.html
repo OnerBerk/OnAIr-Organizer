@@ -8,7 +8,9 @@
       formControlName="email"
       name="email"
       type="email"
-      class="form-control">
+      class="form-control"
+      placeholder="aaa@mail.com"
+    >
     <div
       class="input-error"
       *ngIf="loginForm.controls['email'].dirty && loginForm.hasError('required','email')">
@@ -17,11 +19,12 @@
   </div>
   <div class="input-bloc">
     <label for="password">
-      Password
+      Mot de passe
     </label>
     <input
-      formControlName="password"
       id="password"
+      formControlName="password"
+      placeholder="Mot de passe"
       name="password"
       type="password"
       class="form-control">
@@ -31,5 +34,5 @@
       Le champ password est obligatoire
     </div>
   </div>
-  <button class="button" type="submit">Purchase</button>
+  <button class="button-submit" type="submit">Purchase</button>
 </form>
