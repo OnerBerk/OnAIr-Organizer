@@ -12,12 +12,13 @@ type UserResponseSuccess{
     token:String!
 }
 
-union UserResponse = UserResponseSuccess|ErrorResponse
+union UserLoginResponse = UserResponseSuccess|ErrorResponse
+union OrganiserUserResponse=OrganiserUser|ErrorResponse
 
 extend type Query{
     findUsers:[OrganiserUser]!
-    findUserById(id:ID!):UserResponse!
-    findUserByEmail(email:String!):UserResponse!
+    findUserById(id:ID!):OrganiserUserResponse!
+    findUserByEmail(email:String!):OrganiserUserResponse!
 }
 
 input OrganiserUserInput{
@@ -27,6 +28,12 @@ input OrganiserUserInput{
     password:String!
 }
 
+input LoginInput{
+    email:String,
+    password:String!
+}
+
 extend type Mutation {
-    createOrganiserUser(input:OrganiserUserInput): UserResponse
+    createOrganiserUser(input:OrganiserUserInput): OrganiserUserResponse,
+    login(input:LoginInput):UserLoginResponse
 }

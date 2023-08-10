@@ -50,6 +50,6 @@ public class JwtTokenUtil {
                 .setExpiration(new Date(System.currentTimeMillis() + 600000))
                 .signWith(SignatureAlgorithm.HS512, jws.getBytes()).compact();
 
-        return "Bearer " + token;
+        return token;
     }
 }

@@ -1,7 +1,5 @@
 package com.onAir.organiser.exception;
 
-import lombok.Data;
-
 public class ErrorResponse extends RuntimeException {
     private String message;
 

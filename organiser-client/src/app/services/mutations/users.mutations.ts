@@ -5,9 +5,13 @@ const CREATE_USER = gql`
     createOrganiserUser(
       input: {firstname: $firstname, lastname: $lastname, email: $email, password: $password}
     ) {
-      ... on OrganiserUser {
-        lastname
-        firstname
+      ... on UserResponseSuccess {
+        organiserUser {
+          lastname
+          firstname
+          id
+        }
+        token
       }
       ... on ErrorResponse {message}
     }
