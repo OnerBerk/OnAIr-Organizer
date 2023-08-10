@@ -39,8 +39,6 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.value.password !== this.registerForm.value.confirmPassword) {
       this.passwordError = 'les mot de passe doivent etre identique'
     } else {
-      console.log('icicic')
-
       this.apollo.mutate({
         mutation: CREATE_USER,
         variables: {

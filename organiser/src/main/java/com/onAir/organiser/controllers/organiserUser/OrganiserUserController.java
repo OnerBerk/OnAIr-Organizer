@@ -81,7 +81,7 @@ public class OrganiserUserController {
         } else {
             boolean passwordsMatches = PasswordEncoder.matches(loginInput.getPassword(), existUser.get().getPassword());
             if (!passwordsMatches) {
-                throw new ErrorResponse("Password doesn't match", 500);
+                throw new ErrorResponse("Password doesn't match", 401);
             }
             new OrganiserUser();
             OrganiserUser organiserUser;
