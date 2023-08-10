@@ -8,6 +8,7 @@ import org.springframework.graphql.execution.DataFetcherExceptionResolverAdapter
 import org.springframework.graphql.execution.ErrorType;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+
 @Component
 public class ExceptionHandlerResponse extends DataFetcherExceptionResolverAdapter {
     @Override
@@ -17,7 +18,7 @@ public class ExceptionHandlerResponse extends DataFetcherExceptionResolverAdapte
             Integer errorCode = errorResponse.getCode();
 
             return GraphqlErrorBuilder.newError()
-                    .message(ex.getMessage())
+                    .message("message: " + ex.getMessage() + " "+ "code: " + ((ErrorResponse) ex).getCode())
                     .errorType(ErrorClassification.errorClassification(HttpStatus.valueOf(errorCode).toString()))
                     .location(env.getField().getSourceLocation())
                     .build();

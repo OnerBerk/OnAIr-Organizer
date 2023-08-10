@@ -1,10 +1,10 @@
 package com.onAir.organiser.exception;
 
+import lombok.Data;
+import lombok.Getter;
+
+@Data
 public class ErrorResponse extends RuntimeException {
-    private String message;
-
-    private Integer code;
-
     public ErrorResponse(String message, Integer code) {
         super(message);
         this.message = message;
@@ -15,17 +15,13 @@ public class ErrorResponse extends RuntimeException {
         super();
     }
 
-    @Override
-    public String getMessage() {
-        return message;
-    }
+    @Getter
+    private String message;
 
+    @Getter
+    private Integer code;
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public Integer getCode() {
-        return code;
     }
 
     public void setCode(Integer code) {
