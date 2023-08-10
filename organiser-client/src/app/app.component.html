@@ -1,14 +1,17 @@
 <div class="app">
-  <nav>
-    <ul>
-      <li routerLink="/">Login</li>
-      <li routerLink="/register">Register</li>
-      <li routerLink="/todo">Todos</li>
-      <li routerLink="/users">users</li>
-    </ul>
-  </nav>
-  <div class="content">
-    <router-outlet></router-outlet>
-  </div>
-  <footer class="footer"> footer</footer>
+    <nav>
+        <ul>
+            <li *ngIf="!token" routerLink="/">Login</li>
+            <li *ngIf="!token" routerLink="/register">Register</li>
+            <li *ngIf="token" routerLink="/todo">Todos</li>
+            <li *ngIf="token" routerLink="/users">Users</li>
+        </ul>
+        <ul>
+            <li *ngIf="token" (click)="disconnect()">Exit</li>
+        </ul>
+    </nav>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+    <footer class="footer"> footer</footer>
 </div>

@@ -35,10 +35,14 @@ export class LoginComponent implements OnInit {
             : this.formValidationService.validateAllFormFields(this.loginForm)
     }
 
-    loginDone(){
+    loginDone() {
         console.log('DONE!')
         this.router.navigate(['/users'])
         this.loginForm.reset();
+    }
+
+    loginRequestSuccess(token: string) {
+        localStorage.setItem('token', token)
     }
 
     login() {
@@ -50,7 +54,8 @@ export class LoginComponent implements OnInit {
             },
             refetchQueries: [{query: FIND_TODOS}]
         }).subscribe({
-            next: value => console.log(value),
+            // @ts-ignore
+            next: value => this.loginRequestSuccess(value.data.login.token),
             error: err => console.error(err),
             complete: () => this.loginDone()
         })
